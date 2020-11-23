@@ -23,6 +23,8 @@ else
 fi
 
 # generate index pages
-npx @hackcode/file-preview-page
 cp -r index.html dataDump.json dispatch/* deploy
+cd deploy
+npx @hackcode/file-preview-page
+cd ..
 surge --project ./deploy --domain reverse-coding-2020.surge.sh
