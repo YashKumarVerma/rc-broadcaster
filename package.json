@@ -1,0 +1,24 @@
+{
+  "name": "rc-broadcaster",
+  "version": "1.0.0",
+  "description": "Serverless function to invoke firebase calls and generate links for question files.",
+  "main": "api/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "GOOGLE_APPLICATION_CREDENTIALS=./cred.json node api/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YashKumarVerma/rc-broadcaster.git"
+  },
+  "keywords": [],
+  "author": "Yash Kumar Verma <yk.verma2000@gmail.com> (https://yashkumarverma.github.io/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YashKumarVerma/rc-broadcaster/issues"
+  },
+  "homepage": "https://github.com/YashKumarVerma/rc-broadcaster#readme",
+  "dependencies": {
+    "@google-cloud/storage": "^5.5.0"
+  }
+}
