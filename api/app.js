@@ -1,6 +1,5 @@
 module.exports = (req, res) => {
   const { Storage } = require("@google-cloud/storage");
-
   async function worker() {
     const storage = new Storage();
     const bucketName = "reverse-coding-2020.appspot.com";
@@ -32,6 +31,7 @@ module.exports = (req, res) => {
       });
     })
     .catch((err) => {
+      console.error(err);
       res.json({
         error: true,
         payload: false,
