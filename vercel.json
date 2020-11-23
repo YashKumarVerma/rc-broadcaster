@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/app.js": {
+      "includeFiles": "*.json"
+    }
+  }
+}
