@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
     .catch((err) => {
       console.error(err);
       res.json({
-        error: true,
+        error: err,
         payload: false,
       });
     });
