@@ -12,3 +12,17 @@ if [ -d "$DIR" ]; then
     rm -rf "$DIR"
 fi
 mkdir deploy
+
+printf "\n\n"
+FILE=./dispatch/index.json
+if [ -f "$FILE" ]; then
+    printf "$FILE found, initiating deploy"
+else
+    printf "$FILE does not exist, cannot be deployed without index.\n"
+    exit 1
+fi
+
+# generate index pages
+npx @hackcode/file-preview-page
+cp -r index.html dataDump.json dispatch/* deploy
+surge --project ./deploy --domain reverse-coding-2020.surge.sh
