@@ -9,3 +9,6 @@ chmod +x broadcast.sh
 
 ./broadcast.sh
 ```
+
+## Live ?
+- Index for Reverse Coding 2020 are maintained at : [reverse-coding-2020.surge.sh](http://reverse-coding-2020.surge.sh/)
