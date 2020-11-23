@@ -1,5 +1,7 @@
 module.exports = (req, res) => {
   const { Storage } = require("@google-cloud/storage");
+  console.log("location of js:", __dirname);
+  console.log("location of executioner", process.cwd());
   async function worker() {
     const storage = new Storage();
     const bucketName = "reverse-coding-2020.appspot.com";
