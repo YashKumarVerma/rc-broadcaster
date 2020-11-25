@@ -22,7 +22,23 @@ module.exports = (req, res) => {
       });
     }
 
-    return dataStorage;
+    // mojo with data
+    const processedData = [];
+    for (let i = 0; i < dataStorage.length; i++) {
+      const [id, extension] = dataStorage[i].id.split(".");
+      //   check if given id already exists
+      const index = processedData.findIndex((data) => data.id === id);
+      if (index != -1) {
+        processedData[index][extension] = dataStorage[i].url[0];
+      } else {
+        processedData.push({
+          id,
+          [extension]: dataStorage[i].url[0],
+        });
+      }
+    }
+
+    return processedData;
   }
 
   worker()
