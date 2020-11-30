@@ -14,26 +14,30 @@ module.exports = (req, res) => {
         .getSignedUrl({
           version: "v2", // defaults to 'v2' if missing.
           action: "read",
-          expires: Date.now() + 1000 * 60 * 60 * 48, // one hour
+          expires: Date.now() + 1000 * 60 * 60 * 48, // 48 hour
         });
-      dataStorage.push({
-        id: files[i].name,
-        url,
-      });
+
+      const [problemName, fileName] = files[i].name.split("/");
+      if (fileName.trim().length !== 0) {
+        dataStorage.push({
+          id: `${problemName}.${fileName}`,
+          url: url[0],
+        });
+      }
     }
 
-    // mojo with data
+    //   mojo with data
     const processedData = [];
     for (let i = 0; i < dataStorage.length; i++) {
       const [id, extension] = dataStorage[i].id.split(".");
       //   check if given id already exists
       const index = processedData.findIndex((data) => data.id === id);
       if (index != -1) {
-        processedData[index][extension] = dataStorage[i].url[0];
+        processedData[index][extension] = dataStorage[i].url;
       } else {
         processedData.push({
           id,
-          [extension]: dataStorage[i].url[0],
+          [extension]: dataStorage[i].url,
         });
       }
     }
